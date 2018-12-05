@@ -2,7 +2,7 @@
     $host = 'localhost';
     $username = 'root';
     $password = '';
-    $database = 'nicedb';
+    $database = 'adressbuch_db';
 
     // mit Datenbank verbinden
     $mysqli = new mysqli($host, $username, $password, $database);

@@ -11,7 +11,6 @@
     {
         $error_massage = "Einloggen fehlgeschlagen, session wurde nicht gefunden!";
         echo "<script type='text/javascript'>alert('$error_massage');</script>";
-        //Weiterleiten auf Login-Script
         header('Location: login.php');
     }
 ?>
