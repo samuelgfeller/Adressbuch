@@ -1,6 +1,11 @@
 <?php
     require 'dataBaseConnection.php';
     session_start();
+
+    if(isset($_POST['search_text']))
+    {
+        //In database nach text search_text suchen
+    }
 ?>
 
 <!doctype html>
@@ -18,7 +23,7 @@
         <div class="container">  
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand align-middle" href="adressbuch.php">
-                <img src="../img/nav-bar-icon.svg" width="40" height="40" class="d-inline-block align-middle" alt=""> Adressbuch Pro</a>
+                <img src="../img/nav-bar-icon.svg" width="35" height="35" class="d-inline-block align-middle" alt=""> Adressbuch Pro</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -50,7 +55,19 @@
                     </ul>    
                 </div>
             </nav>
-        </div>
+            </div>
+            <br>
+            <br>
+            <div class="container">
+                <form method="post" action="">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search_text" placeholder="Kontaktinformation" aria-label="Kontaktinformation" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <input type="submit" class="btn btn-dark" name="Suchen" id="button-addon2"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
