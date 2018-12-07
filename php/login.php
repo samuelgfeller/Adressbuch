@@ -113,8 +113,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 							title="mindestens einen Gross-, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen, mindestens 8 Zeichen lang,keine Umlaute."
 							required="true">
 				</div>
-		  		<button type="submit" name="button" value="submit" class="btn btn-info">Senden</button>
-		  		<button type="reset" name="button" value="reset" class="btn btn-warning">Löschen</button>
+		  		<button type="submit" name="button" value="submit" class="btn btn-info">Anmelden</button>
+                <button type="reset" name="button" value="reset" class="btn btn-warning">Löschen</button>
+                <a class="btn btn-warning" data-toggle="collapse.show" href="adressbuch.php" role="button" aria-expanded="false" aria-controls="collapseExample">Zurück</a>
 			</form>
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -123,4 +124,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</body>
 </html>
-

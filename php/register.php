@@ -176,8 +176,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                   title="mindestens einen Gross-, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen, mindestens 8 Zeichen lang,keine Umlaute."
                   required="true">
         </div>
-        <button type="submit" name="button" value="submit" class="btn btn-info">Senden</button>
+        <button type="submit" name="button" value="submit" class="btn btn-info">Registrieren</button>
         <button type="reset" name="button" value="reset" class="btn btn-warning">Löschen</button>
+        <a class="btn btn-warning" data-toggle="collapse.show" href="adressbuch.php" role="button" aria-expanded="false" aria-controls="collapseExample">Zurück</a>
       </form>
     </div>
 
