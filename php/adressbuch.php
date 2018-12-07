@@ -1,11 +1,6 @@
 <?php
     require 'dataBaseConnection.php';
     session_start();
-
-    if(isset($_POST['search_text']))
-    {
-        //In database nach text search_text suchen
-    }
 ?>
 
 <!doctype html>
@@ -29,9 +24,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto ">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="">Kontakte</a>
-                        </li>
                         <?php
                             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
                                 echo '<li class="nav-item dropdown">
@@ -67,6 +59,16 @@
                         </div>
                     </div>
                 </form>
+                <br>
+                <br>
+                <?php             
+                    if(isset($_POST['search_text']))
+                    {
+                        //In database nach text search_text suchen
+                        //validierung usw
+                        echo 'Suche nach '.$_POST['search_text'];
+                    }
+                ?>
             </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
