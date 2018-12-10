@@ -55,7 +55,7 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="search_text" placeholder="Kontaktinformation" aria-label="Kontaktinformation" aria-describedby="button-addon2">
                         <div class="input-group-append">
-                            <input type="submit" class="btn btn-dark" name="Suchen" id="button-addon2"></button>
+                            <input type="submit" class="btn btn-dark" name="Suchen" value="Suchen" id="button-addon2"></button>
                         </div>
                     </div>
                 </form>
@@ -64,9 +64,49 @@
                 <?php             
                     if(isset($_POST['search_text']))
                     {
-                        //In database nach text search_text suchen
-                        //validierung usw
-                        echo 'Suche nach '.$_POST['search_text'];
+                        $search_text = htmlspecialchars(trim($_POST['search_text']));
+                        if(isset($search_text) && $search_text === "")
+                            exit;
+                        $query = "SELECT * FROM contacts";
+		                $stmt = $mysqli->prepare($query);
+		                $stmt->execute();
+                        $result = $stmt->get_result();
+                        
+                        echo '<table class="table"><thead class="text-white bg-dark">
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Vorname</th>
+                                                <th scope="col">Nachname</th>
+                                                <th scope="col">E-Mail</th>
+                                                <th scope="col">Beschreibung</th>
+                                                <th scope="col">Tel.</th>
+                                                <th scope="col">Ort</th>
+                                                <th scope="col">PLZ</th>
+                                                <th scope="col">Datum</th>
+                                            </tr>
+                                          </thead><tbody>';
+
+                        $match = false;
+                        while($contact = $result->fetch_assoc())
+                        {
+                            foreach($contact as $contact_info)
+		                    {
+                                if(stristr(trim($contact_info), $search_text))
+                                {
+                                    echo '<tr>';
+                                    foreach($contact as $contact_info)
+                                        echo '<td>'. $contact_info . '</td>';
+                                    echo '</tr>';
+                                    $match = true;
+                                    break;
+                                }                                
+                            }
+                        }
+                        if($match === false)
+                            echo '<td>'.$search_text.' konnte nicht gefunden werden!</td>';
+                        echo '</tbody></table>';
+                        if(isset($_POST['search_text']))
+                            $_POST['search_text'] = ""; 
                     }
                 ?>
             </div>
