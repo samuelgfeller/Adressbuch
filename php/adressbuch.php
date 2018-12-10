@@ -25,6 +25,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto ">
                         <?php
+                            //handle navigation items for user and guests
                             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
                                 echo '<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="sr-only">(current)</span></a>
@@ -59,9 +60,122 @@
                         </div>
                     </div>
                 </form>
+                <?php
+                    //add contact
+                    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
+                    {
+                          echo '<button type="button" class="btn btn-success font-weight-bold float-right" data-toggle="modal" data-target="#contactModal">+</button>';      
+                          echo '<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Kontakt Hinzufügen</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> 
+                              </div>
+                              
+                              <div class="modal-body">
+                                    <form method="post" action="">
+                                        <div class="form-group ">
+                                        <label class="control-label requiredField" for="firstname">
+                                        Vorname
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                        </label>
+                                        <input class="form-control" id="firstname" name="firstname" type="text"/>
+                                        </div>
+                                        <div class="form-group ">
+                                        <label class="control-label requiredField" for="lastname">
+                                        Nachname
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                        </label>
+                                        <input class="form-control" id="lastname" name="lastname" type="text"/>
+                                        </div>
+                                        <div class="form-group ">
+                                        <label class="control-label requiredField" for="email">
+                                        Email
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                        </label>
+                                        <input class="form-control" id="email" name="email" placeholder="example@exp.com" type="text"/>
+                                        </div>
+                                        <div class="form-group ">
+                                        <label class="control-label requiredField" for="message">
+                                        Beschreibung
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                        </label>
+                                        <textarea class="form-control" cols="40" id="message" name="message" placeholder="Kontakt Beschreibung" rows="3"></textarea>
+                                        </div>
+                                        <div class="form-group ">
+                                        <label class="control-label requiredField" for="phone">
+                                        Tel.
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                        </label>
+                                        <input class="form-control" id="phone" name="phone" placeholder="070 123 45 67" type="text"/>
+                                        </div>
+                                        <div class="form-group ">
+                                        <label class="control-label requiredField" for="place">
+                                        Ort
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                        </label>
+                                        <input class="form-control" id="place" name="place" type="text"/>
+                                        </div>
+                                        <div class="form-group ">
+                                        <label class="control-label requiredField" for="plz">
+                                        PLZ
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                        </label>
+                                        <input class="form-control" id="plz" name="plz" type="text"/>
+                                        </div>
+                                        <div class="form-group ">
+                                        <label class="control-label requiredField" for="date">
+                                        Datum
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                        </label>
+                                        <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="float-right">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Schließen
+                                                </button>
+                                                <button class="btn btn-dark " name="new_contact_data" type="submit">
+                                                    Hinzufügen
+                                                </button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                            </div>
+                          </div>
+                        </div>';
+                    }
+
+                    if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']))
+                    {
+                        //daten validieren usw 
+                        echo $_POST['new_contact_data'];
+                        $_POST['new_contact_data'] = array();
+                    }
+                ?>
                 <br>
                 <br>
-                <?php             
+                <br>
+                <?php
+                    //search contact             
                     if(isset($_POST['search_text']))
                     {
                         $search_text = htmlspecialchars(trim($_POST['search_text']));
