@@ -26,6 +26,35 @@
                     <ul class="navbar-nav mr-auto ">
                     
                         <?php
+                        if(empty($error))
+                        {
+
+                            $query = "SELECT * FROM users WHERE username = ?";
+                            
+                            $stmt = $mysqli->prepare($query);
+                            $stmt->bind_param('s', $_SESSION['username']);		
+                            $stmt->execute();
+                            
+                            $result = $stmt->get_result();
+                    
+                            while($user = $result->fetch_assoc())
+                            {
+                                if($user['username'] === $_SESSION['username'])
+                                {
+                                    $lastname = $user['lastname'];
+                                    $firstname = $user['firstname'];
+                                    $email = $user['email'];
+                                		
+                                }
+                                else
+                                {
+                                    $error = '  Benutzername oder Password falsch!';
+                                }
+                            }
+                        }
+                    
+                    
+                    
                             //handle navigation items for user and guests
                             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
                                 echo '<li class="nav-item dropdown">
@@ -54,36 +83,40 @@
             <br>
             <br>
             <div class="container">
-                <form method="post" action="">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="search_text" placeholder="Kontaktinformation" aria-label="Kontaktinformation" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <input type="submit" class="btn btn-dark" name="Suchen" value="Suchen" id="button-addon2"></button>
-                        </div>
-                    </div>
-                </form>
-                <?php
-                    //add contact
-                    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
-                    {
-                          echo '';
-                    }
+                <form method="post" id="sub" action="">
+                    
 
-                    if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']))
-                    {
-                        //daten validieren usw 
-                        echo $_POST['new_contact_data'];
-                        $_POST['new_contact_data'] = array();
-                    }
-                ?>
-                <br>
+                        <a>Nachname</a> 
+                        <input type="text" class="form-control" id="nchnm" disabled=true name="change_lastname" value="<?php echo $lastname;?>" aria-label="Kontaktinformation" aria-describedby="button-addon2"><br />
+                        <a>Vorname</a>
+                        <input type="text" class="form-control" id="vornm" disabled=true name="change_firstname" value="<?php echo $firstname?>" aria-label="Kontaktinformation" aria-describedby="button-addon2"><br />
+                        <a>e-Mail</a>
+                        <input type="text" class="form-control" id="mail" disabled=true name="search_mail" value="<?php echo $email?>" aria-label="Kontaktinformation" aria-describedby="button-addon2"><br />
+                        <a>Passwort</a>
+                        <input type="password" class="form-control" id="psw" disabled=true name="search_text" value="Passwort" aria-label="Kontaktinformation" aria-describedby="button-addon2"><br />
+
+
+                        <div class="input-group-append">
+                            <input type="submit" class="btn btn-dark" name="Suchen" value="Daten ändern" id="button-change"></button>
+                        </div>
+
+                    
+                </form>
+                <script>
+                    $("#sub").on("submit",function(){
+                        $("#nchnm").prop('disabled', false);
+                        $("#vornm").prop('disabled', false);
+                        $("#mail").prop('disabled', false);
+                        $("#psw").prop('disabled', false);
+                    })
+                </script> 
                 <br>
                 <br>
                 <?php
                     //search contact             
                     if(isset($_POST['search_text']))
                     {
-                        $search_text = htmlspecialchars(trim($_POST['search_text']));
+                      /*  $search_text = htmlspecialchars(trim($_POST['search_text']));
                         if(isset($search_text) && $search_text === "")
                             exit;
                         $query = "SELECT * FROM contacts";
@@ -125,7 +158,7 @@
                             echo '<td>'.$search_text.' konnte nicht gefunden werden!</td>';
                         echo '</tbody></table>';
                         if(isset($_POST['search_text']))
-                            $_POST['search_text'] = ""; 
+                            $_POST['search_text'] = ""; */
                     }
                 ?>
             </div>
