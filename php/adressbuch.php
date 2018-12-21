@@ -52,19 +52,29 @@
             <br>
             <br>
             <div class="container">
-                <form method="post" action="">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="search_text" placeholder="Kontaktinformation" aria-label="Kontaktinformation" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <input type="submit" class="btn btn-dark" name="Suchen" value="Suchen" id="button-addon2"></button>
-                        </div>
-                    </div>
-                </form>
                 <?php
                     //add contact
                     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
                     {
-                          echo '<button type="button" class="btn btn-success font-weight-bold float-right" data-toggle="modal" data-target="#contactModal">+</button>';      
+                        echo '<form method="post" action="">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="search_text" placeholder="Kontaktinformation" aria-label="Kontaktinformation" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-dark" name="Suchen" value="Suchen" id="button-addon2"></button>
+                            </div>
+                            </div>
+                            </form>';
+                          echo '<div style="height: 40px" class="btn-toolbar float-right" role="toolbar">
+                                    <div class="btn-group mr-2" role="group">
+                                        <button type="button" class="btn btn-success text-white font-weight-bold" data-toggle="modal" data-target="#contactModal">+</button>
+                                    </div>
+                                    <div class="btn-group mr-2" role="group">
+                                        <button type="button" class="btn btn-warning text-white font-weight-bold" data-toggle="modal" data-target="#delContactModal">&</button>
+                                    </div>
+                                    <div class="btn-group mr-2" role="group">
+                                        <button type="button" class="btn btn-danger  text-white font-weight-bold" data-toggle="modal" data-target="#delContactModal">--</button>
+                                    </div>';      
+                                
                           echo '<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -152,7 +162,7 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Schließen
                                                 </button>
-                                                <button class="btn btn-dark " name="new_contact_data" type="submit">
+                                                <button class="btn btn-dark" type="submit">
                                                     Hinzufügen
                                                 </button>
                                             </div>
@@ -192,25 +202,38 @@
                                                 <th scope="col">Datum</th>
                                             </tr>
                                           </thead><tbody>';
-
-                        $match = false;
-                        while($contact = $result->fetch_assoc())
+                        if(isset($search_text) && stristr("*", $search_text))
                         {
-                            foreach($contact as $contact_info)
-		                    {
-                                if(stristr(trim($contact_info), $search_text))
-                                {
-                                    echo '<tr>';
-                                    foreach($contact as $contact_info)
-                                        echo '<td>'. $contact_info . '</td>';
-                                    echo '</tr>';
-                                    $match = true;
-                                    break;
-                                }                                
+                            while($contact = $result->fetch_assoc())
+                            {
+                                echo '<tr>';
+                                foreach($contact as $contact_info)
+                                    echo '<td>'. $contact_info . '</td>';
+                                echo '</tr>';
                             }
                         }
-                        if($match === false)
-                            echo '<td>'.$search_text.' konnte nicht gefunden werden!</td>';
+                        else
+                        {
+                            $match = false;
+                            while($contact = $result->fetch_assoc())
+                            {
+                                foreach($contact as $contact_info)
+                                {
+                                    if(stristr(trim($contact_info), $search_text))
+                                    {
+                                        echo '<tr>';
+                                        foreach($contact as $contact_info)
+                                            echo '<td>'. $contact_info . '</td>';
+                                        echo '</tr>';
+                                        $match = true;
+                                        break;
+                                    }                                
+                                }
+                            }
+                            if($match === false)
+                                echo '<td>'.$search_text.' konnte nicht gefunden werden!</td>';
+                        }
+
                         echo '</tbody></table>';
                         if(isset($_POST['search_text']))
                             $_POST['search_text'] = ""; 
