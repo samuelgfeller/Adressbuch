@@ -64,16 +64,16 @@
                             </div>
                             </div>
                             </form>';
-                          echo '<div style="height: 40px" class="btn-toolbar float-right" role="toolbar">
+                          echo '<div class="btn-toolbar float-right" role="toolbar">
                                     <div class="btn-group mr-2" role="group">
                                         <button type="button" class="btn btn-success text-white font-weight-bold" data-toggle="modal" data-target="#contactModal">+</button>
                                     </div>
                                     <div class="btn-group mr-2" role="group">
-                                        <button type="button" class="btn btn-warning text-white font-weight-bold" data-toggle="modal" data-target="#delContactModal">&</button>
+                                        <button type="button" class="btn btn-warning text-white font-weight-bold" data-toggle="modal" data-target="#modifyContactModal">&</button>
                                     </div>
                                     <div class="btn-group mr-2" role="group">
                                         <button type="button" class="btn btn-danger  text-white font-weight-bold" data-toggle="modal" data-target="#delContactModal">--</button>
-                                    </div>';      
+                                    </div></div>';      
                                 
                           echo '<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
@@ -162,7 +162,7 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Schließen
                                                 </button>
-                                                <button class="btn btn-dark" type="submit">
+                                                <button class="btn btn-success" type="submit">
                                                     Hinzufügen
                                                 </button>
                                             </div>
@@ -172,6 +172,41 @@
                             </div>
                           </div>
                         </div>';
+
+                        echo '<div class="modal fade" id="delContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="myModalLabel">Kontakt Löschen</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> 
+                            </div>
+                            
+                            <div class="modal-body">
+                                  <form method="post" action="del_contact.php">
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="contact_id">
+                                      Kontakt ID
+                                      <span class="asteriskField">
+                                          *
+                                      </span>
+                                      </label>
+                                      <input class="form-control" id="contact_id" name="contact_id" type="number" maxlength="6" required="true"/>
+                                      </div>
+                                      <div class="form-group">
+                                          <div class="float-right">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                  Schließen
+                                              </button>
+                                              <button class="btn btn-danger" type="submit">
+                                                  Löschen
+                                              </button>
+                                          </div>
+                                      </div>
+                                      </form>
+                                  </div>
+                          </div>
+                        </div>
+                      </div>';
                     }
                 ?>
                 <br>

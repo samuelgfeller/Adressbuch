@@ -6,13 +6,8 @@
        isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['description']) && 
        isset($_POST['phone']) && isset($_POST['place']) && isset($_POST['plz']) && isset($_POST['date']))
     {
-        $error = $message =  '';
+        $error = '';
         $firstname = $lastname = $email = $username = $description = $phone = $place = $plz = $date = '';
-
-        // Ausgabe des gesamten $_POST Arrays
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
 
         // vorname vorhanden, mindestens 1 Zeichen und maximal 30 Zeichen lang
         if(!empty(trim($_POST['firstname'])) && strlen(trim($_POST['firstname'])) <= 30)
@@ -104,10 +99,9 @@
 
             $result = $stmt->get_result();
             $stmt->close();
-            
-            echo($result);
-
-            header("Location: adressbuch.php");
         }
     }
+
+    header("Location: adressbuch.php");
+    
 ?>
