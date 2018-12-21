@@ -66,7 +66,7 @@
                             </form>';
                           echo '<div class="btn-toolbar float-right" role="toolbar">
                                     <div class="btn-group mr-2" role="group">
-                                        <button type="button" class="btn btn-success text-white font-weight-bold" data-toggle="modal" data-target="#contactModal">+</button>
+                                        <button type="button" class="btn btn-success text-white font-weight-bold" data-toggle="modal" data-target="#addContactModal">+</button>
                                     </div>
                                     <div class="btn-group mr-2" role="group">
                                         <button type="button" class="btn btn-warning text-white font-weight-bold" data-toggle="modal" data-target="#modifyContactModal">&</button>
@@ -74,8 +74,9 @@
                                     <div class="btn-group mr-2" role="group">
                                         <button type="button" class="btn btn-danger  text-white font-weight-bold" data-toggle="modal" data-target="#delContactModal">--</button>
                                     </div></div>';      
-                                
-                          echo '<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          
+                            //add modal
+                          echo '<div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -173,6 +174,91 @@
                           </div>
                         </div>';
 
+                        //modify modal
+                        echo '<div class="modal fade" id="modifyContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="myModalLabel">Kontakt Bearbeiten</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> 
+                            </div>
+                            
+                            <div class="modal-body">
+                                  <form method="post" action="modify_contact.php">
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="contact_id">
+                                      Kontakt ID
+                                      <span class="asteriskField">
+                                        *
+                                      </span>
+                                      </label>
+                                      <input class="form-control" id="contact_id" name="contact_id" type="number" maxlength="6" required="true"/>
+                                      </div>
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="firstname">
+                                      Vorname
+                                      </label>
+                                      <input class="form-control" id="firstname" name="firstname" type="text" maxlength="30"/>
+                                      </div>
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="lastname">
+                                      Nachname
+                                      </label>
+                                      <input class="form-control" id="lastname" name="lastname" type="text" maxlength="30"/>
+                                      </div>
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="email">
+                                      Email
+                                      </label>
+                                      <input class="form-control" id="email" name="email" placeholder="example@exp.com" type="email"/>
+                                      </div>
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="description">
+                                      Beschreibung
+                                      </label>
+                                      <textarea class="form-control" cols="40" id="description" min="1" maxlength="1000" name="description" placeholder="Kontakt Beschreibung" rows="3"></textarea>
+                                      </div>
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="phone">
+                                      Tel.
+                                      </label>
+                                      <input type="text" pattern="[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}" class="form-control" id="phone" name="phone" placeholder="070 123 45 67"/>
+                                      </div>
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="place">
+                                      Ort
+                                      </label>
+                                      <input class="form-control" id="place" maxlength="100" name="place" type="text"/>
+                                      </div>
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="plz">
+                                      PLZ
+                                      </label>
+                                      <input class="form-control" id="plz" name="plz" pattern="[0-9]{4}" type="text"/>
+                                      </div>
+                                      <div class="form-group ">
+                                      <label class="control-label requiredField" for="date">
+                                      Datum
+                                      </label>
+                                      <input class="form-control" id="date" name="date" type="date"/>
+                                      </div>
+                                      <div class="form-group">
+                                          <div class="float-right">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                  Schließen
+                                              </button>
+                                              <button class="btn btn-warning" type="submit">
+                                                  Ändern
+                                              </button>
+                                          </div>
+                                      </div>
+                                      </form>
+                                  </div>
+                          </div>
+                        </div>
+                      </div>';
+
+                        //del modal
                         echo '<div class="modal fade" id="delContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
