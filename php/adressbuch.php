@@ -93,7 +93,7 @@
                                             *
                                         </span>
                                         </label>
-                                        <input class="form-control" id="firstname" name="firstname" type="text" maxlength="30" required="true"/>
+                                        <input class="form-control" id="firstname" name="firstname" type="text" maxlength="30" required/>
                                         </div>
                                         <div class="form-group ">
                                         <label class="control-label requiredField" for="lastname">
@@ -102,7 +102,7 @@
                                             *
                                         </span>
                                         </label>
-                                        <input class="form-control" id="lastname" name="lastname" type="text" maxlength="30" required="true"/>
+                                        <input class="form-control" id="lastname" name="lastname" type="text" maxlength="30" required/>
                                         </div>
                                         <div class="form-group ">
                                         <label class="control-label requiredField" for="email">
@@ -111,7 +111,7 @@
                                             *
                                         </span>
                                         </label>
-                                        <input class="form-control" id="email" name="email" placeholder="example@exp.com" type="email" required="true"/>
+                                        <input class="form-control" id="email" name="email" placeholder="example@exp.com" type="email" required/>
                                         </div>
                                         <div class="form-group ">
                                         <label class="control-label requiredField" for="description">
@@ -120,7 +120,7 @@
                                             *
                                         </span>
                                         </label>
-                                        <textarea class="form-control" cols="40" id="description" min="1" maxlength="1000" name="description" placeholder="Kontakt Beschreibung" rows="3" required="true"></textarea>
+                                        <textarea class="form-control" cols="40" id="description" maxlength="1000" name="description" placeholder="Kontakt Beschreibung" rows="3" required></textarea>
                                         </div>
                                         <div class="form-group ">
                                         <label class="control-label requiredField" for="phone">
@@ -129,7 +129,7 @@
                                             *
                                         </span>
                                         </label>
-                                        <input type="text" pattern="[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}" class="form-control" id="phone" name="phone" placeholder="070 123 45 67" required="true"/>
+                                        <input type="text" pattern="[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}" class="form-control" id="phone" name="phone" placeholder="070 123 45 67" required/>
                                         </div>
                                         <div class="form-group ">
                                         <label class="control-label requiredField" for="place">
@@ -138,7 +138,7 @@
                                             *
                                         </span>
                                         </label>
-                                        <input class="form-control" id="place" maxlength="100" name="place" type="text" required="true"/>
+                                        <input class="form-control" id="place" maxlength="100" name="place" type="text" required/>
                                         </div>
                                         <div class="form-group ">
                                         <label class="control-label requiredField" for="plz">
@@ -147,7 +147,7 @@
                                             *
                                         </span>
                                         </label>
-                                        <input class="form-control" id="plz" name="plz" pattern="[0-9]{4}" type="text" required="true"/>
+                                        <input class="form-control" id="plz" name="plz" pattern="[0-9]{4}" type="text" required/>
                                         </div>
                                         <div class="form-group ">
                                         <label class="control-label requiredField" for="date">
@@ -156,7 +156,7 @@
                                             *
                                         </span>
                                         </label>
-                                        <input class="form-control" id="date" name="date" type="date" required="true"/>
+                                        <input class="form-control" id="date" name="date" type="date" required/>
                                         </div>
                                         <div class="form-group">
                                             <div class="float-right">
@@ -192,7 +192,7 @@
                                         *
                                       </span>
                                       </label>
-                                      <input class="form-control" id="contact_id" name="contact_id" type="number" maxlength="6" required="true"/>
+                                      <input class="form-control" id="contact_id" name="contact_id" type="number" maxlength="6" required/>
                                       </div>
                                       <div class="form-group ">
                                       <label class="control-label requiredField" for="firstname">
@@ -216,7 +216,7 @@
                                       <label class="control-label requiredField" for="description">
                                       Beschreibung
                                       </label>
-                                      <textarea class="form-control" cols="40" id="description" min="1" maxlength="1000" name="description" placeholder="Kontakt Beschreibung" rows="3"></textarea>
+                                      <textarea class="form-control" cols="40" id="description" maxlength="1000" name="description" placeholder="Kontakt Beschreibung" rows="3"></textarea>
                                       </div>
                                       <div class="form-group ">
                                       <label class="control-label requiredField" for="phone">
@@ -276,7 +276,7 @@
                                           *
                                       </span>
                                       </label>
-                                      <input class="form-control" id="contact_id" name="contact_id" type="number" maxlength="6" required="true"/>
+                                      <input class="form-control" id="contact_id" name="contact_id" type="number" maxlength="6" required/>
                                       </div>
                                       <div class="form-group">
                                           <div class="float-right">
